@@ -1,0 +1,28 @@
+{
+  "name": "test-reason-apollo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apollo-server-express": "^1.2.0",
+    "cors": "^2.8.4",
+    "graphql-tag": "^2.5.0",
+    "graphql-tools": "^2.6.1",
+    "react": "^16.0.0",
+    "react-apollo": "1.4.15",
+    "react-dom": "^16.0.0",
+    "reason-apollo": "0.1.0",
+    "reason-scripts": "0.6.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prepare": "npm link bs-platform",
+    "start:server": "node src/apollo-server/index.js"
+  },
+  "devDependencies": {
+    "bs-jest": "^0.2.0",
+    "reason-react": "^0.2.4"
+  }
+}
