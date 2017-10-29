@@ -5704,9 +5704,9 @@ readline2@^1.0.1:
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
 
-reason-apollo@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/reason-apollo/-/reason-apollo-0.1.0.tgz#5b8dfb7bb552a0279652a56101ee38bb4946ddbc"
+reason-apollo@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/reason-apollo/-/reason-apollo-0.2.1.tgz#84feab70586862a0fa07321fbb50ce9de77d1570"
 
 reason-react@^0.2.4:
   version "0.2.4"
