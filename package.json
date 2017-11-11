@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.0",
+    "apollo-client": "^2.0.2",
+    "apollo-link-http": "^1.1.0",
     "apollo-server-express": "^1.2.0",
     "cors": "^2.8.4",
+    "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
     "graphql-tools": "^2.6.1",
     "react": "^16.0.0",
-    "react-apollo": "1.4.15",
     "react-dom": "^16.0.0",
-    "reason-apollo": "0.2.1",
-    "reason-scripts": "0.6.11"
+    "reason-apollo": "^0.3.0",
+    "reason-scripts": "^0.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,6 +26,7 @@
   },
   "devDependencies": {
     "bs-jest": "^0.2.0",
+    "bs-platform": "^2.0.0",
     "reason-react": "^0.2.4"
   }
 }
