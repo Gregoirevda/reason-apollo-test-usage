@@ -9,15 +9,14 @@ const typeDefs = `
 	}
 
   type Query {
-    todos: [Todo]
+    todos(limit: Int): [Todo]
   }
 `;
 
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    todos: () => {
-      console.log('getting');
+    todos: (_,{limit}) => {
       return [{
         id: "uuid-1",
         name: 'Todo 1'
@@ -25,7 +24,12 @@ const resolvers = {
       {
         id: "uuid-2",
         name: 'Todo 2'
+      },
+      {
+        id: "uuid-3",
+        name: 'Todo 3'
       }]
+      .filter((_, index) => index < limit);
     }
   }
 };

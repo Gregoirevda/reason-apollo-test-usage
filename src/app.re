@@ -2,32 +2,37 @@
 
 /* Describe the result type */
 type todo = {. "name": string, "id": string};
-
 type data = {. "todos": array(todo)};
 
-/* Write graphql query */
+/* Write graphql query passing a limit as variable */
 let query = [@bs] gql({|
-    query getTodos {
-      todos {
+    query getTodos($limit: Int) {
+      todos(limit: $limit) {
         id
         name
       }
     }
   |});
 
-/* Pass the above information to the Apollo Client */
-module Config = {
-  type responseType = data;
-  let query = query;
+/* Optional: define variables for your query */
+let variables = {
+  "limit": 2
 };
 
-/* You can now use it as a JSX call */
-module FetchUserName = Apollo.Client(Config);
+
+/* Pass the return type of the query to a module containing a type named `responseType` */
+module Config = {
+  type responseType = data;
+  type variables = {. "limit": int};
+};
+
+/* You can now use `FetchTodos` as a JSX tag */
+module FetchTodos = Apollo.Client(Config);
 
 let component = ReasonReact.statelessComponent("App");
 
 let make = (_children) => {...component, render: (_self) =>
-<FetchUserName>
+<FetchTodos query variables>
   ((response) => {
     switch response##loading {
        | true => <div> (Utils.ste("Loading")) </div>
@@ -42,5 +47,7 @@ let make = (_children) => {...component, render: (_self) =>
        }
     };
   })
-</FetchUserName>
+</FetchTodos>
 };
+
+
