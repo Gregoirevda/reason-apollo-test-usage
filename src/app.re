@@ -1,8 +1,6 @@
 [@bs.module] external gql : ReasonApolloTypes.gql = "graphql-tag";
 
-/* Describe the result type */
-type todo = {. "name": string, "id": string};
-type data = {. "todos": array(todo)};
+
 
 /* Write graphql query passing a limit as variable */
 let query = [@bs] gql({|
@@ -14,19 +12,30 @@ let query = [@bs] gql({|
     }
   |});
 
+/* Describe the result type */
+type todo = {. "name": string, "id": string};
+type data = {. "todos": array(todo)};
+
+
 /* Optional: define variables for your query */
 let variables = {
   "limit": 2
 };
 
-
-/* Pass the return type of the query to a module containing a type named `responseType` */
+/*
+ Create a module containing:
+ `responseType` (type of the response)
+ `variables` (can have no value if ommited, but needs to be declared!)
+ */
 module Config = {
   type responseType = data;
   type variables = {. "limit": int};
 };
 
-/* You can now use `FetchTodos` as a JSX tag */
+/*
+  Pass the configuration to the Apollo Client
+  You can now use `FetchTodos` as a JSX tag
+*/
 module FetchTodos = Apollo.Client(Config);
 
 let component = ReasonReact.statelessComponent("App");

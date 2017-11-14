@@ -16,7 +16,8 @@ const typeDefs = `
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    todos: (_,{limit}) => {
+    todos: (_,{limit = 10}) => {
+      console.log('limit', limit);
       return [{
         id: "uuid-1",
         name: 'Todo 1'
