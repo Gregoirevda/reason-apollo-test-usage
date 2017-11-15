@@ -43,13 +43,14 @@ let component = ReasonReact.statelessComponent("App");
 let make = (_children) => {...component, render: (_self) =>
 <FetchTodos query variables>
   ((response) => {
-    switch response##loading {
-       | true => <div> (Utils.ste("Loading")) </div>
-       | false => {
+    switch response {
+       | Loading => <div> (Utils.ste("Loading")) </div>
+       | Failed(error) => <div> (Utils.ste(error)) </div>
+       | Loaded(result) =>{
         <div>
         (
           ReasonReact.arrayToElement(
-            Array.map(((todo) => <div key=(todo##id)> (Utils.ste(todo##name))</div>), response##data##todos)
+            Array.map(((todo) => <div key=(todo##id)> (Utils.ste(todo##name))</div>), result##todos)
           )
         )
         </div>
