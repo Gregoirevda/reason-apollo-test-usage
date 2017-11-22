@@ -5719,9 +5719,9 @@ readline2@^1.0.1:
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
 
-reason-apollo@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/reason-apollo/-/reason-apollo-0.5.2.tgz#72b8ed78960061eec28a4ded42d848daef5aa051"
+"reason-apollo@https://github.com/Gregoirevda/reason-apollo.git#fix-closure":
+  version "0.5.3"
+  resolved "https://github.com/Gregoirevda/reason-apollo.git#f05f146fea79776545238e596bd99e8893bab2f4"
 
 reason-react@^0.2.4:
   version "0.2.4"
