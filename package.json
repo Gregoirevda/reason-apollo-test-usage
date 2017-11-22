@@ -13,7 +13,7 @@
     "graphql-tools": "^2.6.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "reason-apollo": "0.0.0",
+    "reason-apollo": "^0.5.5",
     "reason-scripts": "^0.7.0"
   },
   "scripts": {
