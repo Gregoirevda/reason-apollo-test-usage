@@ -1,61 +1,21 @@
-[@bs.module] external gql : ReasonApolloTypes.gql = "graphql-tag";
+type actions =
+  | Increment
+  | Decrement;
 
-/* Write graphql query passing a limit as variable */
-let query = [@bs] gql({|
-    query getTodos($limit: Int) {
-      todos(limit: $limit) {
-        id
-        name
-      }
+let component = ReasonReact.reducerComponent("App");
+
+let make = (_children) => {
+  ...component,
+  initialState: () => 0, /* here, state is an `int` */
+  reducer:(action, state) =>
+    switch action {
+      | Increment => ReasonReact.Update(state + 1)
+      | Decrement => ReasonReact.Update(state - 1)
     }
-  |});
-
-/* Describe the result type */
-type todo = {. "name": string, "id": string};
-type data = {. "todos": array(todo)};
-
-
-/* Optional: define variables for your query */
-let variables = {
-  "limit": 2
+  ,
+  render: ({state, reduce}) => <div>
+    <button onClick=(reduce((_) => Increment))> {ReasonReact.stringToElement("+")} </button>
+    <button onClick=(reduce((_) => Decrement))> {ReasonReact.stringToElement("-")} </button>
+    <QueryTodos from=state/>
+  </div>
 };
-
-/*
- Create a module containing:
- `responseType` (type of the response)
- `variables` (can have no value if ommited, but needs to be declared!)
- */
-module Config = {
-  type responseType = data;
-  type variables = {. "limit": int};
-};
-
-/*
-  Pass the configuration to the Apollo Client
-  You can now use `FetchTodos` as a JSX tag
-*/
-module FetchTodos = Apollo.Client.Query(Config);
-
-let component = ReasonReact.statelessComponent("App");
-
-let make = (_children) => {...component, render: (_self) =>
-<FetchTodos query variables>
-  ((response) => {
-    switch response {
-       | Loading => <div> (Utils.ste("Loading")) </div>
-       | Failed(error) => <div> (Utils.ste(error)) </div>
-       | Loaded(result) =>{
-        <div>
-        (
-          ReasonReact.arrayToElement(
-            Array.map(((todo) => <div key=(todo##id)> (Utils.ste(todo##name))</div>), result##todos)
-          )
-        )
-        </div>
-       }
-    };
-  })
-</FetchTodos>
-};
-
-
