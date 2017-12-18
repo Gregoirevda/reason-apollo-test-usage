@@ -5719,11 +5719,9 @@ readline2@^1.0.1:
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
 
-reason-apollo@^0.5.6:
+"reason-apollo@https://github.com/apollographql/reason-apollo.git#mutations":
   version "0.5.6"
-  resolved "https://registry.yarnpkg.com/reason-apollo/-/reason-apollo-0.5.6.tgz#778e11b72f7273f23b9c8271e685ef57697c8c03"
-  dependencies:
-    bs-platform "^2.0.0"
+  resolved "https://github.com/apollographql/reason-apollo.git#003f334d24d20ad2cbbe9457c08c221785fe5535"
 
 reason-react@^0.2.4:
   version "0.2.4"
