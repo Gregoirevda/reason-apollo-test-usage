@@ -5719,9 +5719,9 @@ readline2@^1.0.1:
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
 
-"reason-apollo@https://github.com/apollographql/reason-apollo.git#mutations":
+"reason-apollo@https://github.com/apollographql/reason-apollo.git#feature/static-passed-in-module":
   version "0.5.6"
-  resolved "https://github.com/apollographql/reason-apollo.git#e44de223cbcc6b524c68d3b4d591598b42e82a01"
+  resolved "https://github.com/apollographql/reason-apollo.git#36df4a367abf7bb712623996bef0ff3bcacb0907"
 
 reason-react@^0.2.4:
   version "0.2.4"

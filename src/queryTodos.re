@@ -1,15 +1,3 @@
-[@bs.module] external gql : ReasonApolloTypes.gql = "graphql-tag";
-
-/* Write graphql query passing a limit as variable */
-let query = [@bs] gql({|
-    query getTodos($from: Int, $limit: Int) {
-      todos(from: $from, limit: $limit) {
-        id
-        name
-      }
-    }
-  |});
-
 /*
   Pass the configuration to the Apollo Client
   You can now use `FetchTodos` as a JSX tag
@@ -25,7 +13,7 @@ render: (_self) => {
     "from": from, /* from comes from the props */
     "limit": 10
   };
-  <FetchTodos query variables>
+  <FetchTodos variables>
     ((response) => {
       switch response {
          | Loading => <div> (Utils.ste("Loading")) </div>

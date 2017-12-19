@@ -1,15 +1,3 @@
-[@bs.module] external gql : ReasonApolloTypes.gql = "graphql-tag";
-
-/* Write graphql query passing a limit as variable */
-let mutation = [@bs] gql({|
-    mutation deleteTodo($id: ID!) {
-      deleteTodo(id: $id) {
-        id
-        name
-      }
-    }
-  |});
-
 /*
   Pass the configuration to the Apollo Client
   You can now use `FetchTodos` as a JSX tag
@@ -24,7 +12,7 @@ let make = (_children) => {
     let variables = {
       "id": "uuid-1"
     };
-    <DeleteTodo mutation>
+    <DeleteTodo>
       ((deleteTodo, result) => {
           let mutationResponse = switch result {
             | NotCalled => <div>  (Utils.ste("Not Called")) </div>

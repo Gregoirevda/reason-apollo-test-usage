@@ -13,7 +13,7 @@
     "graphql-tools": "^2.6.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "reason-apollo": "https://github.com/apollographql/reason-apollo.git#mutations",
+    "reason-apollo": "https://github.com/apollographql/reason-apollo.git#feature/static-passed-in-module",
     "reason-scripts": "^0.7.0"
   },
   "scripts": {
