@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {graphqlExpress} = require('apollo-server-express');
+const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 const {schema} = require('./schema');
 const cors = require('cors');
 
@@ -12,6 +12,7 @@ app.use(cors());
 
 // bodyParser is needed just for POST.
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: schema }));
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 app.listen(PORT, () => {
   console.log('Server is running on port ', PORT);

@@ -17,5 +17,8 @@ let make = (_children) => {
     <button onClick=(reduce((_) => Increment))> {ReasonReact.stringToElement("+")} </button>
     <button onClick=(reduce((_) => Decrement))> {ReasonReact.stringToElement("-")} </button>
     <QueryTodos from=state/>
+    <MutateTodo />
   </div>
 };
+
+
