@@ -5721,7 +5721,7 @@ readline2@^1.0.1:
 
 "reason-apollo@https://github.com/apollographql/reason-apollo.git#mutations":
   version "0.5.6"
-  resolved "https://github.com/apollographql/reason-apollo.git#003f334d24d20ad2cbbe9457c08c221785fe5535"
+  resolved "https://github.com/apollographql/reason-apollo.git#e44de223cbcc6b524c68d3b4d591598b42e82a01"
 
 reason-react@^0.2.4:
   version "0.2.4"

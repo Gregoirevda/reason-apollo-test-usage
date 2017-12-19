@@ -14,6 +14,8 @@ let make = (_children) => {
     }
   ,
   render: ({state, reduce}) => <div>
+    <div> (Utils.ste("From: " ++ (string_of_int(state)))) </div>
+    <div> (Utils.ste("Limit: 10")) </div>
     <button onClick=(reduce((_) => Increment))> {ReasonReact.stringToElement("+")} </button>
     <button onClick=(reduce((_) => Decrement))> {ReasonReact.stringToElement("-")} </button>
     <QueryTodos from=state/>

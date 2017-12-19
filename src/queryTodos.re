@@ -10,32 +10,11 @@ let query = [@bs] gql({|
     }
   |});
 
-/* Describe the result type */
-type todo = {. "name": string, "id": string};
-type data = {. "todos": array(todo)};
-
-
-/* Optional: define variables for your query */
-let limit = 2;
-
-/*
- Create a module containing:
- `responseType` (type of the response)
- `variables` (can have no value if ommited, but needs to be declared!)
- */
-module Config = {
-  type responseType = data;
-  /* Optional: Define the type of variables you give
-     We also have a `from` variable coming from the props
-   */
-  type variables = {. "limit": int, "from": int};
-};
-
 /*
   Pass the configuration to the Apollo Client
   You can now use `FetchTodos` as a JSX tag
 */
-module FetchTodos = Apollo.Client.Query(Config);
+module FetchTodos = Apollo.Client.Query(QueryTodosConfig);
 
 let component = ReasonReact.statelessComponent("App");
 
@@ -43,8 +22,8 @@ let make = (~from, _children) => {
 ...component,
 render: (_self) => {
   let variables = {
-    "from": from,
-    "limit": limit
+    "from": from, /* from comes from the props */
+    "limit": 10
   };
   <FetchTodos query variables>
     ((response) => {
